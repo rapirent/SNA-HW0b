@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+from sys import stdin
 import re
 
 
@@ -54,15 +55,20 @@ if __name__ == '__main__':
             graph[parse[1]] = {}
         graph[parse[0]][parse[1]] = graph[parse[1]][parse[0]] = parse[2]
 
-
-    source = input('please input the source name:')
-    target = input('please input the target name:')
-
-    (distance, route_list) = dijkstra(name_table[source], name_table[target], graph, id_table)
-    output = open('丁國騰_hw0b.txt', 'w')
-    print('distance = ' + str(distance), file=output)
-    stack(name_table[target], name_table[source], id_table, route_list, graph, output)
-    print('', file=output)
     nodes_file.close()
     edges_file.close()
+    output = open('丁國騰_hw0b.txt', 'w')
+    line = input('please input the source name:')
+    while line:
+        source = line
+        line = input('please input the target name:')
+        if not line:
+            break
+        target = line
+        (distance, route_list) = dijkstra(name_table[source], name_table[target], graph, id_table)
+        print('distance = ' + str(distance), file=output)
+        stack(name_table[target], name_table[source], id_table, route_list, graph, output)
+        print('', file=output)
+        line = input('please input the source name:')
+
     output.close()

@@ -1,5 +1,5 @@
 # SNA-HW0b
-A very implemention of dijkstra algorithm
+A very implemention of dijkstra SSSP algorithm
 
 ## Prepare
 You should add two input file to your directory, and name `movie_nodes.txt`, `movie_edgesw.txt`
